@@ -1385,7 +1385,7 @@ if(isset($_POST["chat-login"]))
                                                                             $result = mysqli_query($con,$sel_query);
                                                                             while($row = mysqli_fetch_assoc($result)) { ?>
                                                                             <tr>
-                                                                            <td class="text-muted text-center"><i style="font-size: 12px;"><i class="fas fa-quote-right"></i> <?php echo $row['bio'] ?></i></td>
+                                                                            <td class="text-muted text-center"><i class="fas fa-quote-right"></i> <i style="font-size: 12px;"> <?php echo $row['bio'] ?></i></td>
                                                                             </tr> 
                                                                         <?php $count++; } ?>
                                                                         <br>
