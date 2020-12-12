@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Choose account type</title>
+<link rel="stylesheet" href="css/loader.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="icon" type="image/png" href="images\167 Hypermart Logo 2b.png"/>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+</script>
+</head>
+<body onload="myFunction()">
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Select account type</h5>
+                <a href="login.php" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <a href="signup.php" class="btn btn-danger" style="width: 100%;">Employee</a>
+                    </div>
+                    <div class="form-group">
+                        <a href="client_register.php" class="btn btn-info" style="width: 100%;">Client</a>
+                    </div>
+                </form>
+                <a href="login.php">Go Back</a>
+            </div>
+            
+        
+        </div>
+    </div>
+</div>
+<div id="loader"></div>
+<script>
+    var myvar;
+    function myFunction(){
+        myvar = setTimeout(showPage, 3000)
+    }
+</script>
+</body>
+</html>
