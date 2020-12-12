@@ -1154,7 +1154,7 @@ if(isset($_POST["chat-login"]))
                                     <a class="nav-link" href="#" id="QRclick"><i class="fas fa-qrcode"></i> QR Code</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="#" id="QRclickd" data-toggle="modal" data-target="#centralModalSm"><i class="fas fa-qrcode"></i> Users</a>
+                                <a class="nav-link" href="#" id="QRclickd" data-toggle="modal" data-target="#centralModalSm"><i class="fas fa-user-alt"></i></i> Users</a>
                                 </li>
                                     
                                 <?php endif; ?>
