@@ -27,6 +27,7 @@ require_once 'controllers/authController.php';
     <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/masin3.css">
 
   <title>167 Hypermart / Login</title>
   <script lang="javascript" type="text/javascript">
@@ -111,19 +112,22 @@ require_once 'controllers/authController.php';
                 </section>
               </div>
             </div>
-            </div><br><br>
+            </div>
+            <br><br>
             <div class="card-footer text-muted" style="font-size: 13px; width: 100%;">
                 © 2020 Copyright: 167 Hypermart
             </div>
     </div>
-        
-      <div id="loader"></div>
-      
+
+    <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
       <script>
       var myVar;
 
       function myFunction() {
-        myVar = setTimeout(showPage, 2000);
+        myVar = setTimeout(showPage, 3000);
       }
 
       function showPage() {

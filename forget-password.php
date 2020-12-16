@@ -127,7 +127,9 @@
         </div>
     </div>
 </div>
-<div id="loader"></div>
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
 <script>
     var myvar;
     function myFunction(){

@@ -128,7 +128,9 @@ if (!isset($_SESSION['id'])){
     </div>
   </div>
 
-  <div id="loader"></div>
+  <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
   <script>
     document.getElementById("profile").onclick = function() {
       if (profileImage.value == ""){

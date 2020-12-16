@@ -76,7 +76,7 @@ if (!isset($_SESSION['id'])){
                           <button class="btn aqua-gradient" id="excel" type="button"onclick="exportTableToExcel('table', '167 Hypermart-data')" style= "width: 95%; padding: 10px;"><i class="fas fa-file-excel"></i> MS EXCEL</button>
                           <button class="btn peach-gradient" id="excel" type="button" style= "width: 95%; padding: 10px;" onclick="Export2Doc('exportContent', '167 Hypermart Data');"><i class="far fa-file-word"></i> MS WORD</button>
                           <button class="btn purple-gradient" id="btnExport" type="button" style= "width: 95%; padding: 10px;" onclick="Export()"><i class="far fa-file-pdf"></i> PDF</button>
-                          <button class="btn blue-gradient" id="printme" type="button" style= "width: 95%; padding: 10px;"><i class="fas fa-print"></i> PRINT</button>
+                          <button class="btn blue-gradient" id="printme" name="printme" type="button" style= "width: 95%; padding: 10px;"><i class="fas fa-print"></i> PRINT</button>
                           <hr class="my-2">
                         </div>
                     </div>  

@@ -11,7 +11,6 @@
       header('location: login.php');
     exit ();
     } 
-
     $msg = "";
     $msg_class = "";
     $conn = mysqli_connect("localhost", "root", "", "divimart");
@@ -1128,7 +1127,7 @@ if(isset($_POST["chat-login"]))
 </style>
         <div class="limiter animated fadeIn">
             <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-                <div class="container">
+                <div class="container-fluid px-md-5 mx-md-5">
                     <a class="navbar-brand" href="index.php"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px" class="animated rubberBand infinite slow delay-1s"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -1336,7 +1335,7 @@ if(isset($_POST["chat-login"]))
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4 animated bounceInLeft" style="margin-top: 10px;">
+                        <div class="col-md-4 animated fadeIn" style="margin-top: 10px;">
                             <as href="#!" class="hoverable">
                                 <div class="card">
                                     <div class="card-header">
@@ -1434,7 +1433,7 @@ if(isset($_POST["chat-login"]))
                                     </div>
                             </as>
                         </div>
-                        <div class="col-md-8 animated fadeInDown">
+                        <div class="col-md-8 animated fadeIn">
                             <div class="card" style="margin-top: 10px;">
                             <as href="#!" class="hocverable">
                                 <div class="card-header">
@@ -1555,7 +1554,7 @@ if(isset($_POST["chat-login"]))
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8 animated fadeInLeft" style="margin-top: 10px;">
+                        <div class="col-md-8 animated fadeIn slow" style="margin-top: 10px;">
                             <as href="#!" class="hoverable">
                                 <div class="card">
                                     <div class="card-header">
@@ -1599,7 +1598,7 @@ if(isset($_POST["chat-login"]))
                                 chart.render();
                                 }
                             </script>
-                        <div class="col-md-4 animated slideInRight" style="margin-top: 10px;">
+                        <div class="col-md-4 animated fadeIn slow" style="margin-top: 10px;">
                             <as href="#!" class="hoverable">
                                 <div class="card">
                                     <div class="card-header">

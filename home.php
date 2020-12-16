@@ -32,11 +32,11 @@ require_once ('controllers\authController.php');
     
     <style>
         .limiter{
-            background-image:url(images/167 Hypermart Logo 2b.png);
             background-repeat: no-repeat;
             background-size: cover;
             width: 100%;
             height: 100%;
+            margin-bottom: -300px;
              
         }
         .wrap-login100 input{
@@ -67,7 +67,7 @@ require_once ('controllers\authController.php');
             </ul>
             </div>
         </nav>
-        <br><br>
+        <br>
         <div class="container-login100">
             <div class="wrap-login100 animated bounceIn z-depth-1" style=" border-radius: 0px;">
             <form method="post">
@@ -491,7 +491,9 @@ require_once ('controllers\authController.php');
             </div>
         </div>
         
-    <div id="loader"></div>
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
     <script>
 
         var myVar;

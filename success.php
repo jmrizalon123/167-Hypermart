@@ -71,7 +71,9 @@ if (isset($_POST['success'])){
                 </div>
         </section>
     </div>
-      <div id="loader"></div>
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
       <script>
           var myVar;
 
