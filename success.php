@@ -10,7 +10,7 @@ if (isset($_POST['success'])){
     $query = "UPDATE `chat_login` SET profile_image = '$_POST[profile_image]' WHERE email = '$_POST[email]'";
     $query_run = mysqli_query($conn, $query);
     if ($query_run){
-      header("Location: index.php");
+      header("Location: index");
 
     }else{
      echo '<script type = "text/javascript">alert("Oops, Someting went wrong! Try again later")</script>';
@@ -50,9 +50,9 @@ if (isset($_POST['success'])){
                             <div class="card-body">
                                 <form method = "POST" class="text-center" action="" style="color: #757575;">
                                         <h2 class="animated fadeIn" style="color: rgb(8, 60, 95);">Thank You!</h2>
-                                        <P>Stay Safe!</P>
+                                        <p class="text-muted">Have a nice day :)</p>
                                     <div class="text-right modal-footer" style="margin-bottom: -30px;">
-                                        <input type="text" name="email" value = "<?php echo $_SESSION['email'] ?>" style="display: none;">
+                                        <input type="text" name="email" value = "<?php echo $_SESSION['email'] ?>" style="display: nowne;">
                                         <?php
                                                 $count=1;
                                                 $email="";

@@ -2,7 +2,7 @@
 require('controllers\admin_controller.php');
 require('config.php');
 if (!isset($_SESSION['id'])){
-    header('location: admin_login.php');
+    header('location: admin_login');
     exit ();
   }
 
@@ -55,11 +55,11 @@ if (!isset($_SESSION['id'])){
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
             </ul>
-            <form class="form-inline" method="POST" action="admin.php">
+            <form class="form-inline" method="POST" action="admin">
               <div class="md-form my-0">
                 <input class="form-control mr-sm-2" type="text" name="myInput" id="myInput" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary" name="submit" type="submit" id="submit" data-toggle="tooltip" data-placement="top" title="Search: ID, firstname, Lastname, Email" style= "padding: 10px;"><i class="fas fa-search"></i> Search</button>
-                <a href="admin.php?logout=2" class="btn btn-danger" style= "padding: 10px;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="admin?logout=2" class="btn btn-danger" style= "padding: 10px;"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 <a href="" style="color:#ffff;">User: <?php echo $_SESSION['username']; ?></a>
               </div>
             </form>
@@ -265,10 +265,9 @@ if (!isset($_SESSION['id'])){
             </div>
     </div>
     
-    <div id="loader">
-    <div class="spinner-grow" role="status" style="color: red; width: 7px;">
-      <span class="sr-only">Loading...</span>
-    </div>
+    <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
   </div>
     <style>
     tbody th{

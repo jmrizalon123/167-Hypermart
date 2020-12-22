@@ -8,31 +8,27 @@
   include_once('processForm4.php');
   include_once('search_conn.php');
     if (!isset($_SESSION['id'])){
-      header('location: login.php');
+      header('location: login');
     exit ();
     } 
     $msg = "";
     $msg_class = "";
     $conn = mysqli_connect("localhost", "root", "", "divimart");
     if (isset($_POST['save_profile'])) {
-      // for the database
       $bio = stripslashes($_POST['bio']);
       $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
-      // For image upload
       $target_dir = "profiles/";
       $target_file = $target_dir . basename($profileImageName);
-      // VALIDATION
-      // validate image size. Size is calculated in Bytes
       if($_FILES['profileImage']['size'] > 200000) {
         $msg = "Image size should not be greated than 200Kb";
         $msg_class = "Profile Uploaded successfully";
       }
-      // check if file exists
+      
       if(file_exists($target_file)) {
         $msg = "File already exists";
         $msg_class = "Profile Uploaded successfully";
       }
-      // Upload image only if no errors
+      
       if (empty($error)) {
         if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
           $sql = "UPDATE users_profile SET profile_image='$profileImageName', bio='$bio' WHERE email='$_SESSION[email]'";
@@ -50,28 +46,26 @@
       }
     } 
 
-//RAPID TEST FILE UPLOAD
 $msg = "";
     $msg_class = "";
     $conn = mysqli_connect("localhost", "root", "", "divimart");
     if (isset($_POST['submitTest'])) {
-      // for the database
+        
       $profileImageName = time() . '-' . $_FILES["RapidTestfile"]["name"];
-      // For image upload
+      
       $target_dir = "RapidTestFiles/";
       $target_file = $target_dir . basename($profileImageName);
-      // VALIDATION
-      // validate image size. Size is calculated in Bytes
+      
       if($_FILES['RapidTestfile']['size'] > 200000) {
         $msg = "Image size should not be greated than 200Kb";
         $msg_class = "RAPID TEST FILE UPLOADED SUCCESSFULLY";
       }
-      // check if file exists
+      
       if(file_exists($target_file)) {
         $msg = "File already exists";
         $msg_class = "RAPID TEST FILE UPLOADED SUCCESSFULLY";
       }
-      // Upload image only if no errors
+      
       if (empty($error)) {
         if(move_uploaded_file($_FILES["RapidTestfile"]["tmp_name"], $target_file)) {
             $sql = "UPDATE client_data SET rapid_test_file='$profileImageName' WHERE email='$_SESSION[email]'";
@@ -88,29 +82,27 @@ $msg = "";
         }
       }
     }
-
-    //SWAB TEST FILE UPLOAD
+    
 $msg = "";
 $msg_class = "";
 $conn = mysqli_connect("localhost", "root", "", "divimart");
 if (isset($_POST['submitSwabTest'])) {
-  // for the database
+    
   $profileImageName = time() . '-' . $_FILES["SwabTestfile"]["name"];
-  // For image upload
+  
   $target_dir = "SwabTestFiles/";
   $target_file = $target_dir . basename($profileImageName);
-  // VALIDATION
-  // validate image size. Size is calculated in Bytes
+  
   if($_FILES['SwabTestfile']['size'] > 200000) {
     $msg = "Image size should not be greated than 200Kb";
     $msg_class = "SWAB TEST FILE UPLOADED SUCCESSFULLY";
   }
-  // check if file exists
+  
   if(file_exists($target_file)) {
     $msg = "File already exists";
     $msg_class = "SWAB TEST FILE UPLOADED SUCCESSFULLY";
   }
-  // Upload image only if no errors
+  
   if (empty($error)) {
     if(move_uploaded_file($_FILES["SwabTestfile"]["tmp_name"], $target_file)) {
         $sql = "UPDATE client_data SET swab_test_file='$profileImageName' WHERE email='$_SESSION[email]'";
@@ -128,11 +120,10 @@ if (isset($_POST['submitSwabTest'])) {
   }
 }
 
-//CHATROOM LOGIN 
 $message = '';
 if(isset($_SESSION['user_id']))
 {
-  header('location:index.php');
+  header('location:index');
 }
 
 if(isset($_POST["chat-login"]))
@@ -163,7 +154,7 @@ if(isset($_POST["chat-login"]))
         $statement = $connect->prepare($sub_query);
         $statement->execute();
         $_SESSION['login_details_id'] = $connect->lastInsertId();
-        header("location:chat_index.php");
+        header("location:chat_index");
     }
  }
  else
@@ -177,6 +168,7 @@ if(isset($_POST["chat-login"]))
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="120; url= index">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>167 Hypermart</title>
     <link rel="icon" type="image/png" href="images\167 Hypermart Logo 2b.png"/>
@@ -189,19 +181,12 @@ if(isset($_POST["chat-login"]))
     <link rel="stylesheet" href="css/loader.css">
 </head>
 <body onload="loadFunction()">
-
-
-<!-- Central Modal Small -->
 <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-
-  <!-- Change class .modal-sm to change the size of the modal -->
-  <div class="modal-dialog modal-lg" role="document">
-
-
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel">USERS</h4>
+        <h4 class="modal-title w-100" id="staticBackdropLabel">USERS</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -209,7 +194,7 @@ if(isset($_POST["chat-login"]))
       <div class="modal-body">
         <div class="table-responsive-sm" id="roll">
         <input type="search" id="myInput" class="form-control search-input" placeholder="Search" data-table="customers-list" style="margin-top: 10px; width: 90%; margin-left: 20px; border-radius: 20px; padding-left: 15px; margin-bottom: 10px;" >
-        <table class="table customers-list" id="myTable">
+        <table class="table customers-list table-sm" id="myTable">
                 <thead>
                     <tr>
                     <th>No</th>
@@ -218,8 +203,7 @@ if(isset($_POST["chat-login"]))
                     <th>Email</th>
                     <th>QR Image</th>
                     </tr>
-                </thead>
-                    
+                </thead>                    
                 <tbody>
                     <?php
                         $count=1;
@@ -229,7 +213,7 @@ if(isset($_POST["chat-login"]))
                         $result = mysqli_query($con,$sql_query);
                             while($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
-                                    <td class="text-left" style="font-size: 100%;"><?php echo $row["id"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["id"]; ?></td>
                                     <td>
                                     <?php
                                         $conn = mysqli_connect("localhost", "root", "", "divimart");
@@ -237,11 +221,11 @@ if(isset($_POST["chat-login"]))
                                         $users2 = mysqli_fetch_all($results, MYSQLI_ASSOC);
                                     ?>
                                     <?php foreach ($users2 as $user):?>
-                                        <a href="#"><img  src="<?php echo 'profiles/'. $user['profile_image'] ?>" class="avatar rounded-circle card-img-35 z-depth-1 d-flex mr-3" id="myImg" height="50px" width="50px"></a>
+                                        <a href="#"><img  src="<?php echo 'profiles/'. $user['profile_image'] ?>" class="avatar rounded-circle card-img-35 z-depth-1 d-flex mr-3" id="myImg" height="45px" width="45px"></a>
                                     <?php endforeach; ?>
                                     </td>
-                                    <td class="text-left" style="font-size: 100%;"><?php echo $row["qrUsername"];?></td>
-                                    <td class="text-left" style="font-size: 100%;"><?php echo $row["email"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["qrUsername"];?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["email"]; ?></td>
                                     <td>
                                     <?php
                                         $conn = mysqli_connect("localhost", "root", "", "howtoqr");
@@ -249,12 +233,11 @@ if(isset($_POST["chat-login"]))
                                         $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
                                     ?>
                                     <?php foreach ($users as $user):?>
-                                        <a href="userQr/<?php echo $row['qrImg'] ?>" target="_blank"><img  src="<?php echo 'userQr/' . $user['qrImg'] ?>" class="rounded-circle card-img-35 z-depth-1 d-flex mr-3" height="50px"></a>
+                                        <a href="userQr/<?php echo $row['qrImg'] ?>" target="_blank"><img  src="<?php echo 'userQr/' . $user['qrImg'] ?>" class="" height="50px"></a>
                                     <?php endforeach; ?>
                                     </td>
                                 </tr>
-                    <?php $count++; } ?>
-                
+                    <?php $count++; } ?>                
                 </tbody>
         </table>
             <style>
@@ -272,6 +255,95 @@ if(isset($_POST["chat-login"]))
     </div>
   </div>
 </div>
+
+<!--- STORE ENTTY --->
+
+<div class="modal animated bounceIn" id="centralModalSmStore" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="staticBackdropLabel"><strong>Store Entry</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive-sm" id="roll2">
+        <input type="search" id="myInput" class="form-control search-input" placeholder="Search" data-table="customers-list" style="margin-top: 10px; width: 100%; border-radius: 20px; padding-left: 15px; margin-bottom: 10px;" >
+        <table class="table customers-list table-sm" id="print" name="print">
+                <thead>
+                    <tr>
+                    <th>No</th>
+                    <th>Profile</th>
+                    <th class="text-center">Temperature</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Contact No</th>
+                    <th>Store Visited</th>
+                    <th>Time In</th>
+                    
+                    </tr>
+                </thead>
+                    
+                <tbody>
+                    <?php
+                        $count=1;
+                        $email="";
+                        $email = $_SESSION['email'];
+                        $sql_query="SELECT * FROM client_store_entry ORDER BY id ASC;";
+                        $result = mysqli_query($con,$sql_query);
+                            while($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["id"]; ?></td>
+                                    <td>
+                                    <?php
+                                        $conn = mysqli_connect("localhost", "root", "", "divimart");
+                                        $results = mysqli_query($conn, "SELECT * FROM users_profile WHERE email = '$row[Email]'");
+                                        $users2 = mysqli_fetch_all($results, MYSQLI_ASSOC);
+                                    ?>
+                                    <?php foreach ($users2 as $user):?>
+                                        <a href="profiles/<?php echo $row['profile_image'] ?>"><img  src="<?php echo 'profiles/'. $user['profile_image'] ?>" class="avatar rounded-circle card-img-35 z-depth-1 d-flex mr-3" id="myImg" height="40px" width="40px"></a>
+                                    <?php endforeach; ?>
+                                    </td>
+                                    <td class="text-center" style="font-size: auto;"><?php echo $row["Temperature"];?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Fullname"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Email"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Address"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Contact_Number"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Store_Visited"]; ?></td>
+                                    <td class="text-left" style="font-size: auto;"><?php echo $row["Date Entry"]; ?></td>
+                                </tr>
+                    <?php $count++; } ?>
+                </tbody>
+        </table>
+            <style>
+                #roll2{
+                    height: 450px;
+                    overflow-y: auto;
+                    }
+            </style>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <small class="text-muted" style="float: left"> © 2020 Copyright: 167 Hypermart</small>
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="myApp.printTable()">Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    var myApp = new function () {
+        this.printTable = function () {
+            var tab = document.getElementById('print');
+            var win = window.open('', '', 'height=500,width=500');
+            win.document.write(tab.outerHTML);
+            win.document.close();
+            win.print();
+        }
+    }
+</script>
 <script>
         (function(document) {
             'use strict';
@@ -321,7 +393,7 @@ if(isset($_POST["chat-login"]))
         <div class="tab-content">
           <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
             <div class="modal-body mb-1">
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="index" method="post" enctype="multipart/form-data">
                 <strong>UPLOAD RAPID TEST FILE</strong><br><br>
                     Select Image or PDF File to Upload:
                     <input type="file" name="RapidTestfile" id="RapidTestfile" class="form-control">
@@ -331,7 +403,7 @@ if(isset($_POST["chat-login"]))
             <script>
                 document.getElementById("submitTest").onclick = function() {
                     if (RapidTestfile.value == ""){
-                    alert("No file selected!");
+                    alert("No file Chosen!");
                     return false;
                     } else
                     { 
@@ -358,7 +430,7 @@ if(isset($_POST["chat-login"]))
       <!--Modal cascading tabs-->
       <div class="modal-c-tabs">
             <div class="modal-body">
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="index" method="post" enctype="multipart/form-data">
                 <strong>UPLOAD SWAB TEST FILE</strong><br><br>
                     Select Image or PDF File to Upload:
                     <input type="file" name="SwabTestfile" id="SwabTestfile" class="form-control">
@@ -368,7 +440,7 @@ if(isset($_POST["chat-login"]))
             <script>
                 document.getElementById("submitSwabTest").onclick = function() {
                     if (SwabTestfile.value == ""){
-                    alert("No file selected");
+                    alert("No file Chosen!");
                     return false;
                     } else
                     { 
@@ -396,7 +468,7 @@ if(isset($_POST["chat-login"]))
       </div>
       <div class="modal-body text-center mb-1">
 
-        <form action="index.php" method="POST">
+        <form action="index" method="POST">
             <h5 class="mt-1 mb-2">Create Admin</h5>
             <p class="text-left">To add admin account, Please provide registered email address.</p>
 
@@ -427,7 +499,7 @@ if(isset($_POST["chat-login"]))
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <div class="form-group text-center" style="position: relative;" >
             <span class="img-div">
                 <?php
@@ -521,7 +593,7 @@ if(isset($_POST["chat-login"]))
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
               <?php echo $msg; ?>
@@ -578,7 +650,7 @@ if(isset($_POST["chat-login"]))
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
               <?php echo $msg; ?>
@@ -632,7 +704,7 @@ if(isset($_POST["chat-login"]))
         var txt;
         var r = confirm("Would you like to send a request to activate your chatroom account?");
         if (r == true) {
-            window.location.href = "contact.php";
+            window.location.href = "contact";
         } else {
             txt = "You pressed Cancel!";
         }
@@ -776,7 +848,7 @@ if(isset($_POST["chat-login"]))
       </div>
       <div class="modal-footer flex-center">
         <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
-        <a href="index.php?logout=1" class="btn  btn-outline-danger">Yes</a>
+        <a href="index?logout=1" class="btn  btn-outline-danger">Yes</a>
       </div>
     </div>
   </div>
@@ -794,7 +866,7 @@ if(isset($_POST["chat-login"]))
                 <span aria-hidden="true">&times;</span>
                 </button>
         </div>
-        <form action="index.php" method = "POST">
+        <form action="index" method = "POST">
             <div class="modal-body text-center">
                 <input type="text" name="email" id="email" value="<?php echo $_SESSION['email'] ?>" style="display: none;">
                 <?php if (count($errors) > 0): ?>
@@ -805,10 +877,10 @@ if(isset($_POST["chat-login"]))
                         </li>
                         <?php endforeach;?>
                     </div>
-                    <?php endif;?>
+                <?php endif;?>
                 <h3 class=""><i class="fas fa-book-medical fa-4x animated rotateIn my-4"></i></h3>
                 <strong>Hi, </strong><input style="text-transform: uppercase; font-size: 16px; text-align:center; width: 90px; border-style: none;" name="username" value="<?php echo $_SESSION['username']?>">
-                <p class="t">Tell us what you feel rigth now!</p>
+                <p *-class="t">Tell us what you feel rigth now!</p>
                 <!-- Material input -->
                 <div class="md-form">
                     <input type="text" id="form1" class="form-control" name="temperature">
@@ -1104,15 +1176,15 @@ if(isset($_POST["chat-login"]))
     <div class="modal-content" style="border-radius: 50px; height: 60px;">
       <div class="modal-body text-center">
             <a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 hoverable animated bounceIn" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-lock"></i></a>
-            <a href="QR attendance.php" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 hoverable animated bounceIn" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-camera"></i></a>
+            <a href="QR attendance" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 hoverable animated bounceIn" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-camera"></i></a>
             <a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 hoverable animated bounceIn" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1" data-toggle="modal" data-target="#modalSubscriptionForm222"><i class="fas fa-user-alt"></i></a>
             <a href="navbarDropdownMenuLink-4" class="text-right d-inline-flex justify-content-center align-items-center nav-link dropdown-toggle widget-subheading " data-toggle="dropdown"aria-haspopup="true" style="width: 40px; height: 40px; margin-top: -5px; color: #0d47a1"><i class="fas fa-cog"></i></a>
             <div class="dropdown-menu dropdown-menu-right dropdown-info animated fadeIn z-depth-1" aria-labelledby="navbarDropdownMenuLink-4">
             <?php if (!$_SESSION['administrator']): ?>
                 <?php else: ?>
-                    <a class="dropdown-item animated bounceInLeft" href="admin_login.php"><i class="fas fa-user-tie"></i> Admin Panel</a>
-                    <a class="dropdown-item animated bounceInRight" href="report.php" data-toggle="modal" data-target="#AddADminProfile"><i class="fas fa-user-plus" style="color: maroon"></i> Add Admin</a>
-                    <a class="dropdown-item animated bounceInUp" href="report.php"><i class="fas fa-exclamation-triangle" style="color: maroon"></i> Report Log</a>
+                    <a class="dropdown-item animated bounceInLeft" href="admin_login"><i class="fas fa-user-tie"></i> Admin Panel</a>
+                    <a class="dropdown-item animated bounceInRight" href="report" data-toggle="modal" data-target="#AddADminProfile"><i class="fas fa-user-plus" style="color: maroon"></i> Add Admin</a>
+                    <a class="dropdown-item animated bounceInUp" href="report"><i class="fas fa-exclamation-triangle" style="color: maroon"></i> Report Log</a>
                 <?php endif;?>
             </div>
       </div>
@@ -1128,7 +1200,7 @@ if(isset($_POST["chat-login"]))
         <div class="limiter animated fadeIn">
             <nav class="navbar navbar-expand-lg navbar-dark primary-color">
                 <div class="container-fluid px-md-5 mx-md-5">
-                    <a class="navbar-brand" href="index.php"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px" class="animated rubberBand infinite slow delay-1s"></a>
+                    <a class="navbar-brand" href="index"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px" class="animated rubberBand infinite slow delay-1s"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -1136,7 +1208,7 @@ if(isset($_POST["chat-login"]))
                     <div class="collapse navbar-collapse" id="basicExampleNav">
                         <ul class="navbar-nav mr-auto text-uppercase">
                             <li class="nav-item active">
-                                <a class="nav-link font-weight-normal" href="index.php"><i class="fas fa-home"></i> Home</a>
+                                <a class="nav-link font-weight-normal" href="index"><i class="fas fa-home"></i> Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-briefcase-medical"></i> Health check</a>
@@ -1154,6 +1226,9 @@ if(isset($_POST["chat-login"]))
                                 </li>
                                 <li class="nav-item">
                                 <a class="nav-link" href="#" id="QRclickd" data-toggle="modal" data-target="#centralModalSm"><i class="fas fa-user-alt"></i></i> Users</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="#" id="clientStore" data-toggle="modal" data-target="#centralModalSmStore"><i class="fas fa-store"></i></i> Store Entry</a>
                                 </li>
                                     
                                 <?php endif; ?>
@@ -1181,16 +1256,51 @@ if(isset($_POST["chat-login"]))
                                     <li class="nav-item dropdown">
                                         <a href="" class="nav-link widget-subheading notifMSG" data-toggle="dropdown"><span class="label label-pill label-danger count badge red z-depth-1 mr-0" style="border-radius:10px;"></span> <i class="fas fa-bell"></i></span></a>
                                          
-                                        <ul class="dropdown-menu notify dropdown-menu-right" style="text-align: left; padding: 5px; width: 300px;">
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-link"><a href="" class="notify"></a></li>
+                                            <div class="arrow"></div>
                                         </ul>
                                     </li>
+                                    <style>
+                                        .notify: first-child:hover ~ .arrow{
+                                            background-color: grey;
+                                        }
+                                        .dropdown ul{
+                                            position: relative;
+                                        }
+                                        .dropdown{
+                                            
+                                        }
+                                        .arrow{
+                                            position: absolute;
+                                            width: 11px;         
+                                            height: 11px;
+                                            top: -5.5px;
+                                            left: 215px;
+                                            transform: rotate(45deg);
+                                            background-color: white;
+                                        }
+                                        .dropdown-link:not(:nth-last-child(2)){
+                                            border-bottom: 1px solid grey;
+                                        }
+                                        .dropdown-link > a{
+                                            padding: .5rem 1rem;
+                                            align-items: left;
+                                            justify-content: left;
+                                        }
+                                        .dropdown-menu{
+                                            width: 16rem;
+                                            height: 350px;
+                                            overflow-y: auto;
+                                        }
+                                    </style>
                                 <?php endif;?>
                                 <li class="nav-item dropdown" style = "color: black;">
                                         <a class="nav-link dropdown-toggle widget-subheading" id="navbarDropdownMenuLink-4" data-toggle="modal" data-target="#basicExampleModal101"
                                         aria-haspopup="true" aria-expanded="false" name="email">
                                         <i class="fas fa-user-cog"></i></a>
                                 </li>
-                                <a type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalConfirmDelete"style="border-radius: 20px;">Logout <i class="fas fa-chevron-circle-left"></i></a>
+                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalConfirmDelete"style="border-radius: 20px;">Logout <i class="fas fa-chevron-circle-left"></i></a>
                                 <li class="nav-item avatar" style = "color: black;">
                                     <a class="nav-link p-0" href="#">
                                     <?php
@@ -1256,7 +1366,7 @@ if(isset($_POST["chat-login"]))
                         </div>
                     </nav>
                     <br />
-                    <form method="post" action="index.php" id="comment_form">
+                    <form method="post" action="index" id="comment_form">
                         <div class="form-group">
                             <label>FROM:</label>
                                 <input type="email" name="email" class="form-control disabled" id="" value = "<?php echo $_SESSION['email'] ?>">
@@ -1423,7 +1533,7 @@ if(isset($_POST["chat-login"]))
                                                     </section>
                                                     <div class="text-center" style="width: 100%;">
                                                         <a href="#" class="btn btn-secondary btn-sm" data-dismiss="modal"data-toggle="modal" data-target="#modalSocial22"> PROFILE</a>
-                                                        <a href="forget-password.php" class="btn btn-primary btn-sm"> Change Password</a>
+                                                        <a href="forget-password" class="btn btn-primary btn-sm"> Change Password</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1521,12 +1631,12 @@ if(isset($_POST["chat-login"]))
                                                             $result = mysqli_query($con,$sel_query);
                                                             while($row = mysqli_fetch_assoc($result)) { ?>
                                                             <tr>
-                                                                <th><a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 animated bounceIn" title="Add Rapid Test File" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1" data-toggle="modal" data-target="#modalLRForm"><i class="fas fa-file-medical"></i></a> RAPID TESTING: <strong class="text-muted"><?php echo $row['rapid_testing'] ?></strong></th>
-                                                                <td class="text-center"><?php echo $row["test_result"]; ?><hr></td>
+                                                                <th><a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 animated bounceIn" title="Add Rapid Test File" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1" data-toggle="modal" data-target="#modalLRForm"><i class="fas fa-file-medical"></i></a> RAPID TESTING: <strong class="" style="color: #0d47a1; opacity: .7;"><?php echo $row['rapid_testing'] ?></strong></th>
+                                                                <td class="text-center" style="color: green; font-weight: 400;"><?php echo $row["test_result"]; ?><hr></td>
                                                             </tr><br>
                                                             <tr>
-                                                                <th> <a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 animated bounceIn" title="Add Swab Test File" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1" data-toggle="modal" data-target="#modalLRForm22"><i class="fas fa-file-medical"></i></a> SWAB TESTING: <strong class="text-muted"><?php echo $row['swab_testing'] ?></strong></th>  
-                                                                <td class="text-center" style="color: green;"><?php echo $row["swab_result"]; ?><hr></td> 
+                                                                <th> <a href="" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 animated bounceIn" title="Add Swab Test File" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: red" data-toggle="modal" data-target="#modalLRForm22"><i class="fas fa-file-medical"></i></a> SWAB TESTING: <strong class="" style="color: #0d47a1; opacity: .7;"><?php echo $row['swab_testing'] ?></strong></th>  
+                                                                <td class="text-center" style="color: green; font-weight: 400;"><?php echo $row["swab_result"]; ?><hr></td> 
                                                             </tr>
                                                             
                                                                

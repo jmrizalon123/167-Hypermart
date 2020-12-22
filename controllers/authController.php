@@ -37,7 +37,7 @@ $conn = new mysqli('localhost', 'root', '', 'divimart');
         $sql = "SELECT * FROM users WHERE email='$email' LIMIT 1";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            $errors['email'] = "Oops! Someting went wrong. Email is already taken.";
+            $errors['email'] = "Your email is already register! Login your account!";
         }
         $sql = "SELECT * FROM users WHERE username='$username' LIMIT 1";
         $result = mysqli_query($conn, $sql);
@@ -91,7 +91,7 @@ $conn = new mysqli('localhost', 'root', '', 'divimart');
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
                 $_SESSION['type'] = 'alert-success';
-                header('location: home.php'); 
+                header('location: home'); 
                 exit ();
             } else {
                 $_SESSION['error_msg'] = "Server is offline: Could not register user";
@@ -129,11 +129,11 @@ $conn = new mysqli('localhost', 'root', '', 'divimart');
 
                     $_SESSION['message'] = "WELCOME BACK, ";
                     $_SESSION['alert-class'] = "alert-success";
-                    header('location: index.php?user'.'-'. $_SESSION['username']);
+                    header('location: index?user'.'-'. $_SESSION['username']);
                     exit();
                 } else {
                     
-                    $errors['login_fail'] = '<strong>Notice!</strong> Invalid credentials <br> incorrect email or password';
+                    $errors['login_failed'] = '<strong>Notice!</strong> Invalid credentials <br> incorrect email or password';
                 }
             } else {
                 $_SESSION['message'] = "Database error. Login failed!";
@@ -147,7 +147,7 @@ $conn = new mysqli('localhost', 'root', '', 'divimart');
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         unset($_SESSION['verify']);
-        header("location: login.php");
+        header("location: login");
     }
 
 //home Authentication
@@ -234,40 +234,38 @@ if (isset($_POST['submitdata'])) {
         $swab_result = $_POST["swab_result"];
         $swab_date = $_POST["swab_date"];
         $swab_place = $_POST["swab_place"];
+        $Store_Visited = $_POST["Store_Visited"];
 
         $temperature = $_POST["temperature"];
         $symptoms=$_POST['check_list'];
         $other_symptoms = $_POST["other_symptoms"];
     
-    $connection = mysqli_connect("localhost", "root", "");
-    $db = mysqli_select_db($connection, 'divimart');
-    $query = "INSERT INTO `client_information` (store_code, store_name, firstname, lastname, middlename, age, gender, contact_number, email, address2, city_municipality, barangay, zip)VALUES('$store_code', '$store_name', '$firstname', '$lastname', '$middlename', '$age', '$gender', '$contact_number', '$email', '$address2', '$city_municipality', '$barangay', '$zip')";
-     $query_run = mysqli_query($connection, $query);
+            $connection = mysqli_connect("localhost", "root", "");
+            $db = mysqli_select_db($connection, 'divimart');
+            $query = "INSERT INTO `client_information` (store_code, store_name, firstname, lastname, middlename, age, gender, contact_number, email, address2, city_municipality, barangay, zip)VALUES('$store_code', '$store_name', '$firstname', '$lastname', '$middlename', '$age', '$gender', '$contact_number', '$email', '$address2', '$city_municipality', '$barangay', '$zip')";
+            $query_run = mysqli_query($connection, $query);
 
-     $conn = mysqli_connect("localhost", "root", "");
-     $db = mysqli_select_db($conn, 'divimart');
-     foreach($symptoms as $chk1){
-        $chk.=$chk1.",";
-    }
-     $query = "INSERT INTO `client_data` (fname, lname, middlename, contact_number, email, are_you_currently_on_strict_quarantine, start_date, end_date, close_contact, positive_contact, quarantine_facility, quarantine_address, rapid_testing, test_result, test_date, test_location, swab_testing, swab_result, swab_date, swab_place, temperature, symptoms, other_symptoms)VALUES
-     ('$firstname', '$lastname', '$middlename', '$contact_number', '$email', '$are_you_currently_on_strict_quarantine', '$start_date', '$end_date', '$close_contact', '$positive_contact', '$quarantine_facility', '$quarantine_address', '$rapid_testing', '$test_result', '$test_date', '$test_location', '$swab_testing', '$swab_result', '$swab_date', '$swab_place', '$temperature', '$chk', '$other_symptoms')";
-     $query_run = mysqli_query($conn, $query);
+            $conn = mysqli_connect("localhost", "root", "");
+            $db = mysqli_select_db($conn, 'divimart');
+            foreach($symptoms as $chk1){
+                $chk.=$chk1.",";
+            }
+            $query = "INSERT INTO `client_data` (fname, lname, middlename, contact_number, email, are_you_currently_on_strict_quarantine, start_date, end_date, close_contact, positive_contact, quarantine_facility, quarantine_address, rapid_testing, test_result, test_date, test_location, swab_testing, swab_result, swab_date, swab_place, temperature, symptoms, other_symptoms, Store_Visited)VALUES
+            ('$firstname', '$lastname', '$middlename', '$contact_number', '$email', '$are_you_currently_on_strict_quarantine', '$start_date', '$end_date', '$close_contact', '$positive_contact', '$quarantine_facility', '$quarantine_address', '$rapid_testing', '$test_result', '$test_date', '$test_location', '$swab_testing', '$swab_result', '$swab_date', '$swab_place', '$temperature', '$chk', '$other_symptoms', '$Store_Visited')";
+            $query_run = mysqli_query($conn, $query);
 
-     if($query_run){
-         $_SESSION['firstname'] = $firstname;
-         $_SESSION['lastname'] = $lastname;
-         $_SESSION['middlename'] = $middlename;
-        
-        echo '<script type = "text/javascript">alert("Data save successfully")</script>';
-        header('location: generate_user_qr.php');
+            if($query_run){
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['middlename'] = $middlename;
+                
+                echo '<script type = "text/javascript">alert("Data save successfully")</script>';
+                header('location: generate_user_qr');
 
-     }
-     else{
-       echo '<script type = "text/javascript">alert("Data not submited")</script>';
-
-     }
-    
-   
+            }
+            else{
+            echo '<script type = "text/javascript">alert("Data not submited")</script>';
+        }
     }
 }
 
@@ -291,7 +289,6 @@ if (isset($_POST['submitdata'])){
     }
 }
 
-
     if (isset($_POST['contact'])) {
         if (empty($_POST['email'])){
             $errors['email'] = 'Subject is required *';
@@ -310,7 +307,7 @@ if (isset($_POST['submitdata'])){
             $query = "INSERT INTO `report_log` (email, subject, message)VALUES
             ('$email', '$subject', '$message')";
             $query_run = mysqli_query($conn, $query);
-                        
+           
             if($query_run){
                 echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>NOTICE!</strong> Your message has been sent! Thanks for your patience, Stay healthy. <i class="far fa-grin-hearts fa-2x" style="color: blue;"></i>
