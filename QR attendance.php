@@ -5,7 +5,7 @@
   //include_once('processForm2.php');
   
     if (!isset($_SESSION['id'])){
-      header('location: login.php');
+      header('location: login');
     exit ();
     } 
 ?>
@@ -29,7 +29,7 @@
         <div class="limiter animated fadeIn">
             <nav class="navbar navbar-expand-lg navbar-dark primary-color">
                 <div class="container">
-                    <a class="navbar-brand" href="index.php"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px"></a>
+                    <a class="navbar-brand" href="index"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -40,8 +40,8 @@
             </nav>
                 <div class="container" style="margin-top: 30px;">
                     <form class=" border border-light p-3" action="" method="POST">
-                    <p class="h4 mb-4 text-center" style="text-transform: uppercase;">QR AUTHENTICATION</p>
-                    <p class="text-center">We used this option for us to trace the daily status of our users, as well as 167 Hypermart Employee's !</p>
+                    <p class="h4 mb-4 text-center" style="text-transform: uppercase;">SCAN QR</p>
+                    <p class="text-center"></p>
 
                     <textarea name="location_address" style="width: 100%; display: none;">Locating...</textarea>
                     <script>

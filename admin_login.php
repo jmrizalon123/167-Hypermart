@@ -29,6 +29,7 @@ require_once 'controllers\admin_controller.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="images\167 Hypermart Logo 2b.png"/>
     <title>167 Hypermart | Admin login</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -103,16 +104,19 @@ require_once 'controllers\admin_controller.php';
                 </div>
             </form>
             <script>
-                $(function() {
-                    $('#basicExampleModal').modal('show');
+                $(document).ready(function(){
+                    $('#basicExampleModal').modal({
+                        visible: 'true',
+                        backdrop: 'static',
+                        keyboard: false
+                    });
                 });
             </script>
     </div>
     
-    <div id="loader">
-    <div class="spinner-grow" role="status" style="color: red; width: 7px;">
-      <span class="sr-only">Loading...</span>
-    </div>
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
   </div>
 
 

@@ -68,7 +68,7 @@
                   <div class="account" style="display: none;"> 
                     <label for="">Account Type:</label>
                     <select id="account_type" name="account_type" type="text" class="form-control form-control-lg" style="font-size: 14px;">
-                    <option value="Employee">Employee</option>
+                    <option value="Client">Client</option>
                     </select>
                     <span id="SPaccount" class="animated shake"></span>
                   </div>

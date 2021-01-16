@@ -1,7 +1,7 @@
 <?php
 require_once('controllers\authController.php');
 if (!isset($_SESSION['id'])){
-  header('location: login.php');
+  header('location: login');
   exit ();
 }
 
@@ -33,7 +33,7 @@ if (!isset($_SESSION['id'])){
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
           $msg_class = "alert-success";
-          header("Location: success.php");
+          header("Location: User_Temperature");
         } else {
           $msg = "There was an error in the database";
           $msg_class = "Profile Uploaded successfully"; 
@@ -99,7 +99,7 @@ if (!isset($_SESSION['id'])){
                   <p>
                   <a href="" target="_blank">This is the custom default avater you can change your profile once you activate your account!</a>
                   </p>
-                  <form action="upload.php" method="post" enctype="multipart/form-data">
+                  <form action="upload" method="post" enctype="multipart/form-data">
                       <h2 class="text-center mb-3 mt-3">Add profile</h2>
                       <?php if (!empty($msg)): ?>
                           <div class="alert <?php echo $msg_class ?>" role="alert">
@@ -128,7 +128,9 @@ if (!isset($_SESSION['id'])){
     </div>
   </div>
 
-  <div id="loader"></div>
+  <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
   <script>
     document.getElementById("profile").onclick = function() {
       if (profileImage.value == ""){

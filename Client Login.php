@@ -1,5 +1,5 @@
 <?php 
-require_once 'controllers/authController.php';
+require_once 'controllers\client_login_auth.php';
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ require_once 'controllers/authController.php';
     <link rel="stylesheet" type="text/css" href="css/masin3.css">
 
   <title>167 Hypermart / Login</title>
-  <script lang="javascript" type="text/javascript">
+    <script lang="javascript" type="text/javascript">
         window.history.forward();
     </script>
     
@@ -110,9 +110,10 @@ require_once 'controllers/authController.php';
                     </div>
                   </div>
                 </section>
-                <div class="text-muted" style="font-size: 13px; width: 100%;">
-                    © 2020 Copyright: 167 Hypermart
-                </div>
+                
+            <div class="text-muted" style="font-size: 13px; width: 100%;">
+                © 2020 Copyright: 167 Hypermart
+            </div>
               </div>
             </div>
             </div>

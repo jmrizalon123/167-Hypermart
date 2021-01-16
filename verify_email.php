@@ -74,7 +74,7 @@
                                                             $query = mysqli_query($con, "DELETE FROM verify_email WHERE code='$code'");
                                                             echo '<script type = "text/javascript">alert("Your account has been verified, Go back and login your account")</script>';
                                                             echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                                <strong>Notice:!</strong> Account Verified successfully. <a href="login.php" class="btn btn-info">Login here</a>
+                                                                <strong>Notice:!</strong> Account Verified successfully. <a href="login" class="btn btn-info">Login here</a>
                                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                                 </button>

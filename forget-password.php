@@ -10,20 +10,24 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<script>
-	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
-</script>
 </head>
 <body onload="myFunction()">
+<script>
+ $(document).ready(function(){
+    $('#myModal').modal({
+        visible: 'true',
+        backdrop: 'static',
+        keyboard: false
+      });
+  });
+</script>
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content"> 
             <div class="modal-header">
             
                 <h5 class="modal-title">Change Password</h5>
-                <a href="login.php" class="close" data-dismiss="modal">&times;</a>
+                <a href="login" class="close" data-dismiss="modal">&times;</a>
             </div>
             <div class="modal-body">
                     <?php
@@ -119,7 +123,7 @@
                 </form>
                 <br>
                 <div class="footer">
-                <a href="login.php">Go Back</a>
+                <a href="login">Go Back</a>
                 </div>
             </div>
             
@@ -127,7 +131,9 @@
         </div>
     </div>
 </div>
-<div id="loader"></div>
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
 <script>
     var myvar;
     function myFunction(){
