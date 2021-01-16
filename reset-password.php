@@ -26,9 +26,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
-	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
+ $(document).ready(function(){
+    $('#myModal').modal({
+        visible: 'true',
+        backdrop: 'static',
+        keyboard: false
+      });
+  });
 </script>
 </head>
 <body onload="myFunction()">
@@ -37,7 +41,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Create new password</h5>
-                <a href="login.php" class="close" data-dismiss="modal">&times;</a>
+                <a href="login" class="close" data-dismiss="modal">&times;</a>
             </div>
             <div class="modal-body">
                 <?php 
@@ -63,12 +67,10 @@
 
                         if($query) {
                             $query = mysqli_query($con, "DELETE FROM password_reset WHERE code='$code'");
-                            echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Notice!</strong> Password change successfully.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>';
+                            echo '<script type="text/javascript"> 
+                                        alert("Password change successfully! Go back and login"); 
+                                        window.location.href = "login";
+                                    </script>;'; 
                         }else{
                             exit("Someting went wrong!");
                         }
@@ -84,7 +86,7 @@
                     
                 </form>
                 <br>
-                <a href="login.php">Login</a>
+                <a href="login">Login</a>
             </div>
         </div>
     </div>

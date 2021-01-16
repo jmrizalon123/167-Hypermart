@@ -5,7 +5,7 @@
   include_once('processForm2.php');
   
     if (!isset($_SESSION['id'])){
-      header('location: login.php');
+      header('location: login');
     exit ();
     } 
 
@@ -77,7 +77,7 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <div class="form-group text-center" style="position: relative;" >
             <span class="img-div">
                 <?php
@@ -173,7 +173,7 @@ document.getElementById("social_medai_show").onclick = function() {
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
               <?php echo $msg; ?>
@@ -347,7 +347,7 @@ document.getElementById("social_medai_show").onclick = function() {
       </div>
       <div class="modal-footer flex-center">
         <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
-        <a href="index.php?logout=1" class="btn  btn-outline-danger">Yes</a>
+        <a href="index?logout=1" class="btn  btn-outline-danger">Yes</a>
       </div>
     </div>
   </div>
@@ -365,7 +365,7 @@ document.getElementById("social_medai_show").onclick = function() {
                 <span aria-hidden="true">&times;</span>
                 </button>
         </div>
-        <form action="index.php" method = "POST">
+        <form action="index" method = "POST">
             <div class="modal-body text-center">
                 <input type="text" name="email" id="email" value="<?php echo $_SESSION['email'] ?>" style="display: none;">
                 <?php if (count($errors) > 0): ?>
@@ -458,9 +458,9 @@ document.getElementById("social_medai_show").onclick = function() {
             <div class="dropdown-menu dropdown-menu-right dropdown-info animated fadeIn z-depth-1" aria-labelledby="navbarDropdownMenuLink-4">
             <?php if (!$_SESSION['administrator']): ?>
                 <?php else: ?>
-                    <a class="dropdown-item animated bounceInLeft" href="admin_login.php"><i class="fas fa-user-tie"></i> Admin Panel</a>
-                    <a class="dropdown-item animated bounceInRight" href="report.php" data-toggle="modal" data-target="#AddADminProfile"><i class="fas fa-user-plus" style="color: maroon"></i> Add Admin</a>
-                    <a class="dropdown-item animated bounceInUp" href="report.php"><i class="fas fa-exclamation-triangle" style="color: maroon"></i> Report Log</a>
+                    <a class="dropdown-item animated bounceInLeft" href="admin_login"><i class="fas fa-user-tie"></i> Admin Panel</a>
+                    <a class="dropdown-item animated bounceInRight" href="report" data-toggle="modal" data-target="#AddADminProfile"><i class="fas fa-user-plus" style="color: maroon"></i> Add Admin</a>
+                    <a class="dropdown-item animated bounceInUp" href="report"><i class="fas fa-exclamation-triangle" style="color: maroon"></i> Report Log</a>
                 <?php endif;?>
             </div>
       </div>
@@ -480,7 +480,7 @@ document.getElementById("social_medai_show").onclick = function() {
               <?php else: ?>
                 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
                 <div class="container">
-                    <a class="navbar-brand" href="index.php"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px"></a>
+                    <a class="navbar-brand" href="index"><img src="images/167 Hypermart Logo 2b.png" alt="" width="120px"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -488,7 +488,7 @@ document.getElementById("social_medai_show").onclick = function() {
                     <div class="collapse navbar-collapse" id="basicExampleNav">
                         <ul class="navbar-nav mr-auto text-uppercase">
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal" href="index.php"><i class="fas fa-home"></i> Home</a>
+                                <a class="nav-link font-weight-normal" href="index"><i class="fas fa-home"></i> Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-briefcase-medical"></i> Health check</a>
@@ -497,7 +497,7 @@ document.getElementById("social_medai_show").onclick = function() {
                                 <a class="nav-link" href="#" id="QRclick"><i class="fas fa-qrcode"></i> QR Code</a>
                             </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php"><i class="fas fa-envelope"></i> Contact Us</a>
+                                    <a class="nav-link" href="contact"><i class="fas fa-envelope"></i> Contact Us</a>
                                 </li>
                         </ul>
                         <!-- Links -->
@@ -552,7 +552,7 @@ document.getElementById("social_medai_show").onclick = function() {
                     
                     <p class="text-center mx-auto mb-4 pb-2">This browser server is intended for <strong>ADMINISTRATOR</strong> use only! Please prevent browsing this page!</p>
                     
-                    <a href="index.php" class="btn btn-deep-purple btn-rounded">Go Back</a>
+                    <a href="index" class="btn btn-deep-purple btn-rounded">Go Back</a>
 
                   </section>
                   </div>

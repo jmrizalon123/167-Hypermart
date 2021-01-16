@@ -1,7 +1,7 @@
 <?php
 require_once ('controllers\authController.php');
   if (!isset($_SESSION['id'])){
-    header('location: login');
+    header('location: login.php');
   exit ();
   }
 ?>
@@ -128,12 +128,13 @@ require_once ('controllers\authController.php');
                         <input type="text" class="form-control" id="contact_number" name="contact_number" onkeyup="contact_number()">
                         <span id="SPcp"></span>
                     </div>
-
+                    
+                    
                     </div>
 
                     <div class="form-group" style="display: none;">
                         <label for="inputstore">Store Visited:</label>
-                        <input type="text" class="form-control" id="Store_Visited" name="Store_Visited" value="(HO Based)">
+                        <input type="text" class="form-control" id="Store_Visited" name="Store_Visited" value="(C1) Hypermart Antipolo">
                         <span id="SPstoreVisited"></span>
                     </div>
 
@@ -151,8 +152,7 @@ require_once ('controllers\authController.php');
                     <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="inputCity">Current Address: City/Municipality:</label>
-                        <input type="text" id="city_municipality" name="city_municipality" class="form-control"style="text-transform: uppercase" onclick = "city_municipality()">
-                        <!--- <select id="city_municipality" name="city_municipality" class="form-control"style="text-transform: uppercase" onclick = "city_municipality()">
+                        <select id="city_municipality" name="city_municipality" class="form-control"style="text-transform: uppercase" onclick = "city_municipality()">
                             <option selected>Select...</option>
                             <option>Caloocan City</option>
                             <option>Las Piñas City</option>
@@ -170,7 +170,7 @@ require_once ('controllers\authController.php');
                             <option>San Juan City</option>
                             <option>Taguig City</option>
                             <option>Valenzuela City</option>
-                        </select>--->
+                        </select>
                         <span id="SPcity"></span>
                         </div>
                         <div class="form-group col-md-4">
@@ -202,7 +202,7 @@ require_once ('controllers\authController.php');
                         <div class="form-group col-md-6 animated fadeIn" id="storeEMP" style="display: none;">
                             <label for="inputCity">Store Code</label>
                             <select id="storecode" name="store_code" class="form-control"style="text-transform: uppercase" onclick = "storecode()">
-                                <option></option>
+                                <option selected>Select...</option>
                                 <option>167 Hypermart (Head Oficce)</option>
                                 <option>C1</option>
                                 <option>C2</option>
@@ -575,7 +575,7 @@ require_once ('controllers\authController.php');
                // return false;
             }
 
-            if (city_municipality.value === ""){
+            if (city_municipality.value === "Select..."){
                 document.getElementById("SPcity").innerHTML = "City/Municipality is required *";
                 document.getElementById("SPcity").style.display = "block";
                 document.getElementById("SPcity").style.color = "red";
@@ -899,11 +899,11 @@ require_once ('controllers\authController.php');
         }
 
         document.getElementById("city_municipality").oninput = function () {
-            if (city_municipality.value === ""){
+            if (city_municipality.value === "Select..."){
                 document.getElementById("SPcity").innerHTML = "City/Municipality is required *";
                 document.getElementById("SPcity").style.display = "block";
                 document.getElementById("SPcity").style.color = "red";
-                return false;
+                //return false;
             }else{
                 document.getElementById("SPcity").style.display = "none";
             }
@@ -1064,8 +1064,6 @@ require_once ('controllers\authController.php');
                 document.getElementById("store_name").value = "Divimart Manila";
             }else if (storecode.value == "D01"){
                 document.getElementById("store_name").value = "Online Manila";
-            }else if (storecode.value == "167 Hypermart (Head Oficce)"){
-                document.getElementById("store_name").value = "WTE";
             }else if (storecode.value == "Select..."){
                 document.getElementById("store_name").value = "";
             }
@@ -1073,7 +1071,8 @@ require_once ('controllers\authController.php');
         }
 
     </script>
-    
+
+        
 </body>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

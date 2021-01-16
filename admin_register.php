@@ -56,7 +56,7 @@
       </div>
       
       <div class="wrap-login100 animated fadeIn">
-        <form action="admin_register.php" method="post">
+        <form action="admin_register" method="post">
         <span class="login100-form-title p-b-8 p-t-8" style = "margin-top: -20px">Admin Account</span>
 
         <?php if (count($errors2) > 0): ?>
@@ -105,7 +105,7 @@
         </form>
 
             <div class="col text-left p-t-50">
-            <p class ="txt1">Already have an account? <a href="login.php">Login</a></p>
+            <p class ="txt1">Already have an account? <a href="login">Login</a></p>
             </div>
       </div>
     </div>

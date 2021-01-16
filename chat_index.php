@@ -4,7 +4,7 @@ include('database_connection.php');
 include('controllers\authController.php');
 if(!isset($_SESSION['user_id']))
 {
- header("location:index.php");
+ header("location:index");
 } 
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ if(!isset($_SESSION['user_id']))
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="index" method="post" enctype="multipart/form-data">
           <div class="form-group text-center" style="position: relative;" >
             <span class="img-div">
                 <?php
@@ -144,7 +144,7 @@ if(!isset($_SESSION['user_id']))
             <div class="col-sm-12 text-right" style="background-color:">
                <a href="<?php echo $row['facebook_account'] ?>" title="Settings" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-4 hoverable" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1" data-toggle="modal" data-target="#modalSubscriptionForm222"><i class="fas fa-cog"></i></i></a>
                <a href="<?php echo $row['facebook_account'] ?>" target="_blank" title="Search" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-4 hoverable" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-edit"></i></i></a>
-               <a href="chat_logout.php" title="Sign out" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-4 hoverable" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-sign-out-alt"></i></i></a>
+               <a href="chat_logout" title="Sign out" class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-4 hoverable" style="width: 40px; height: 40px; margin-top: -5px; margin-right: 5px; color: #0d47a1"><i class="fas fa-sign-out-alt"></i></i></a>
             </div>
             <div class="col-lg-4 mb-lg-0 text-center">
                 <?php
@@ -169,7 +169,7 @@ if(!isset($_SESSION['user_id']))
                         $email = $_SESSION['email'];
                         $sel_query="SELECT * FROM client_information WHERE email = '$_SESSION[email]'";
                         $result = mysqli_query($con,$sel_query);
-                        while($row = mysqli_fetch_assoc($result)) { ?> 
+                        while($row = mysqli_fetch_assoc($result)) { ?>
                             <p class="text-muted" style="text-transform: uppercase; font-weight: bold; font-size: 80%"><?php echo $row['firstname']; echo ' '; echo $row['middlename']; echo ' '; echo $row['lastname']?></p>
                             <p class="text-muted" style="font-size: 80%; margin-top: -15px"><?php echo $row['email'];?></p>
                             <hr>

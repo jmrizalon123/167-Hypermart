@@ -17,7 +17,7 @@
   <div class="container">
     <div class="row">
       <div class="col-4 offset-md-4" style="margin-top: 30px;">
-        <a href="update_profile.php" class="btn btn-success">New profile</a>
+        <a href="update_profile" class="btn btn-success">New profile</a>
         <br>
         <br>
         <table class="table table-bordered">

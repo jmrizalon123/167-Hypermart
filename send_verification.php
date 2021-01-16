@@ -57,7 +57,7 @@
     
     
                                     // Content
-                                    $url ="http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/code.php?code=$code";
+                                    $url ="http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/code?code=$code";
                                     $mail->isHTML(true);                                  // Set email format to HTML
                                     $mail->Subject = 'ACCOUNT VERIFICATION';
                                     $mail->Body    = "<h1>ACCOUNT OTP VERIFICATION</h1><br>

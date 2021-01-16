@@ -1,7 +1,7 @@
 <?php
  require_once 'controllers\authController.php';
  if (!isset($_SESSION['id'])){
-    header('location: login.php');
+    header('location: login');
     exit ();
   }
 ?>
@@ -108,9 +108,9 @@
                                         $qrlink = $workDir."/167 Hypermart/userQr/".$_GET['success'];
                                     ?> 
                                     <p readonly><?php echo $qrlink; ?></p>
-                                    <a href="download.php?download=<?php echo $_GET['success']; ?>">Download Now</a>   
+                                    <a href="download?download=<?php echo $_GET['success']; ?>">Download Now</a>   
                                 </div>
-                                    <a href="upload.php" class="btn btn-primary" style="width: 100%;">NEXT</a>
+                                    <a href="upload" class="btn btn-primary" style="width: 100%;">NEXT</a>
                             </div>
                         </div>
                         </section>
@@ -138,10 +138,10 @@
                               <input type="text" name="qrUname" class = "form-control disabled" value="<?php echo $_SESSION['username'];  ?>">
 
                               <label for="" class="text-left">E-mail</label>
-                              <input type="text" name="email" class = "form-control disabledd" value="<?php echo $_SESSION['email']; ?>">
+                              <input type="text" name="email" class = "form-control disabled" value="<?php echo $_SESSION['email']; ?>">
                           </div>
                           <div class="form-group">
-                              <button type="submit" name="create" class="btn btn-primary btn-block">GENERATE</button>
+                              <button type="submit" name="create" class="btn btn-primary btn-block">GENERATE QR</button>
                           </div>
                       </form>
                   </div>
